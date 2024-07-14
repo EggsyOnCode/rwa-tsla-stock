@@ -198,4 +198,26 @@ contract dTSLA is ConfirmedOwner, FunctionsClient, ERC20 {
     function getUSDCValueofUSDT(uint256 _usdtTokens) internal view returns (uint256) {
         return (_usdtTokens * getUsdcPrice()) / PRECISION;
     }
+
+    // Getters
+
+    function getPortfolioBalance() public view returns (uint256) {
+        return s_portfolioBalance;
+    }
+
+    function getUserRedemptionWithdrawalQueue(address _user) public view returns (uint256) {
+        return s_userRedemptionWithdrawalQueue[_user];
+    }
+
+    function getUserToRequest(bytes32 _reqId) public view returns (dTSLARequest memory) {
+        return s_reqIdtoReq[_reqId];
+    }
+
+    function getMintSourceCode() public view returns (string memory) {
+        return i_mintSourceCode;
+    }
+
+    function getRedeemSourceCode() public view returns (string memory) {
+        return i_redeemSourceCode;
+    }
 }
